@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GestionPolizas.Common\GestionPolizas.Common.csproj" />
     <ProjectReference Include="..\GestionPolizas.DAL\GestionPolizas.DAL.csproj" />
   </ItemGroup>
 
