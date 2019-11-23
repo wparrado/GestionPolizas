@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-
-namespace GestionPolizas
+﻿namespace GestionPolizas
 {
+    using GestionPolizas.DAL;
+    using Microsoft.AspNetCore;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
+
     public class Program
     {
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+            using (var context = new Context())
+            {
+                context.Database.Migrate();
+            }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

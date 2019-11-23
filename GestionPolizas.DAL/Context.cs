@@ -2,6 +2,7 @@
 {
     using GestionPolizas.Entities;
     using Microsoft.EntityFrameworkCore;
+    using System.Reflection;
 
     public partial class Context : DbContext
     {
@@ -19,7 +20,12 @@
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
         {
-            optionbuilder.UseSqlite(@"Data Source=c:\GestionPolizas.db");
+            optionbuilder.UseSqlite("Filename=GestionPolizas.db", options =>
+            {
+                options.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+            });
+
+            base.OnConfiguring(optionbuilder);
         }
 
         public virtual DbSet<Customer> Customer { get; set; }
