@@ -36,6 +36,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GestionPolizasFront", "Gest
 		SlnRelativePath = "GestionPolizasFront\"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPolizasIntegration.Test", "GestionPolizasIntegration.Test\GestionPolizasIntegration.Test.csproj", "{0CC945D5-35D5-4346-8CD0-FF8D293838E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{2A03FF20-BF66-4D13-BBBC-5CE0237184D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A03FF20-BF66-4D13-BBBC-5CE0237184D7}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{2A03FF20-BF66-4D13-BBBC-5CE0237184D7}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{0CC945D5-35D5-4346-8CD0-FF8D293838E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CC945D5-35D5-4346-8CD0-FF8D293838E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CC945D5-35D5-4346-8CD0-FF8D293838E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CC945D5-35D5-4346-8CD0-FF8D293838E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
