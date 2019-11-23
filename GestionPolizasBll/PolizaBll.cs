@@ -4,6 +4,7 @@
     using GestionPolizas.DAL;
     using GestionPolizas.Entities;
     using GestionPolizas.Entities.DTO;
+    using System.Collections.Generic;
     using System.Linq;
 
     public class PolizaBll
@@ -61,8 +62,11 @@
                     Active = policyDto.Active
                 };
 
-                context.Add(policy);
+                context.Policy.Add(policy);
                 context.SaveChanges();
+                policyDto.Id = policy.Id;
+                result.ResultObject = new List<PolicyDto> { policyDto };
+                result.ResultMessage = Constants.policyCreated;
             }
             else
             {
@@ -79,24 +83,41 @@
             if (ValidateCoveragePercentage(policyDto.RiskTypeId, policyDto.Coverage))
             {
                 Policy policy = context.Policy.FirstOrDefault(p => p.Id == policyDto.Id);
-                policy = new Policy
-                {
-                    Name = policyDto.Name,
-                    Description = policyDto.Description,
-                    Price = policyDto.Price,
-                    Coverage = policyDto.Coverage,
-                    PolicyTypeId = policyDto.PolicyTypeId,
-                    RiskTypeId = policyDto.RiskTypeId,
-                    Active = policyDto.Active
-                };
-
-                context.Update(policy);
+                policy.Name = policyDto.Name;
+                policy.Description = policyDto.Description;
+                policy.Price = policyDto.Price;
+                policy.Coverage = policyDto.Coverage;
+                policy.PolicyTypeId = policyDto.PolicyTypeId;
+                policy.RiskTypeId = policyDto.RiskTypeId;
+                policy.Active = policyDto.Active;
+                context.Policy.Update(policy);
                 context.SaveChanges();
+                result.ResultObject = new List<PolicyDto> { policyDto };
+                result.ResultMessage = Constants.policyUpdated;
             }
             else
             {
                 result.DataError = true;
                 result.ResultMessage = Constants.coveragePercentageError;
+            }
+
+            return result;
+        }
+
+        public APIResult<PolicyDto> Delete(long id)
+        {
+            APIResult<PolicyDto> result = new APIResult<PolicyDto>();
+            if (ValidatePolicyRelation(id))
+            {
+                Policy policy = context.Policy.FirstOrDefault(p => p.Id == id);
+                context.Policy.Remove(policy);
+                context.SaveChanges();
+                result.ResultMessage = Constants.policyDeleted;
+            }
+            else
+            {
+                result.DataError = true;
+                result.ResultMessage = Constants.policyRelationError;
             }
 
             return result;
@@ -110,6 +131,12 @@
             }
 
             return true;
+        }
+
+        public bool ValidatePolicyRelation(long id)
+        {
+            var customerPolicies = context.CustomerPolicy.FirstOrDefault(c => c.PolicyId == id);
+            return customerPolicies == null;
         }
     }
 }
