@@ -81,6 +81,10 @@
                 entity.Property(e => e.Active);
                 entity.Property(e => e.Name)
                       .IsRequired();
+                entity.HasData(
+                    new IdentificationType { Id = 1, Name = "CC", Description = "Cedula Ciudadania", Active = true },
+                    new IdentificationType { Id = 2, Name = "NIT", Description = "NIT", Active = true }
+                    );
             });
 
             modelBuilder.Entity<Policy>(entity =>
@@ -111,6 +115,12 @@
                       .IsRequired();
                 entity.Property(e => e.Name)
                       .IsRequired();
+                entity.HasData(
+                    new PolicyType { Id = 1, Name = "Terremoto", Description = "Poliza que cubre terremoto", Active = true },
+                    new PolicyType { Id = 2, Name = "Incendio", Description = "Poliza que cubre incendio", Active = true },
+                    new PolicyType { Id = 3, Name = "Robo", Description = "Poliza que cubre robo", Active = true },
+                    new PolicyType { Id = 4, Name = "Perdida", Description = "Poliza que cubre perdida", Active = true }
+                    );
             });
 
             modelBuilder.Entity<RiskType>(entity =>
@@ -120,6 +130,12 @@
                       .IsRequired();
                 entity.Property(e => e.Name)
                       .IsRequired();
+                entity.HasData(
+                    new RiskType { Id = 1, Name = "bajo", Description = "riesgo bajo", Active = true },
+                    new RiskType { Id = 2, Name = "medio", Description = "riesgo medio", Active = true },
+                    new RiskType { Id = 3, Name = "medio-alto", Description = "riesgo medio alto", Active = true },
+                    new RiskType { Id = 4, Name = "alto", Description = "riesgo alto", Active = true }
+                );
             });
         }
     }
