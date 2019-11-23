@@ -6,7 +6,7 @@
     {
         public Customer()
         {
-            IdentificationTypes = new HashSet<IdentificationType>();
+            CustomersPolicies = new HashSet<CustomerPolicy>();
         }
 
         public long Id { get; set; }
@@ -16,6 +16,7 @@
         public string Address { get; set; }
         public string Telephone { get; set; }
 
-        public virtual ICollection<IdentificationType> IdentificationTypes { get; set; }
+        public virtual IdentificationType Identification { get; set; }
+        public virtual ICollection<CustomerPolicy> CustomersPolicies { get; set; }
     }
 }
