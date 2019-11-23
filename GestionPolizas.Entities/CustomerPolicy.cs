@@ -5,6 +5,12 @@
 
     public partial class CustomerPolicy
     {
+        public CustomerPolicy()
+        {
+            Policies = new HashSet<Policy>();
+            Customers = new HashSet<Customer>();
+        }
+
         public long Id { get; set; }
         public long PolicyId { get; set; }
         public long CustomerId { get; set; }
