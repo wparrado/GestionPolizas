@@ -22,7 +22,9 @@ namespace GestionPolizas
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddEntityFrameworkSqlite().AddDbContext<Context>();
+            services.AddScoped<IRepository, Repository<Context>>();
             services.AddScoped<PolizaBll>();
+            services.AddScoped<PolicyAssignationBll>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

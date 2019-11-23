@@ -10,15 +10,17 @@
     public class PolizaBll
     {
         private readonly Context context;
+        private readonly IRepository repository;
 
-        public PolizaBll(Context context)
+        public PolizaBll(Context context, IRepository repository)
         {
             this.context = context;
+            this.repository = repository;
         }
 
         public APIResult<PolicyDto> Get()
         {
-            var policies = context.Policy.Select(p => new PolicyDto
+            var policies = repository.FindAll<Policy>().Result.Select(p => new PolicyDto
             {
                 Id = p.Id,
                 Name = p.Name,
@@ -33,17 +35,20 @@
 
         public APIResult<PolicyDto> Get(long id)
         {
-            var policies = context.Policy.Where(p => p.Id == id).Select(p => new PolicyDto
+            var dbPolicy = repository.FindById<Policy>(id).Result;
+            var policy = new PolicyDto
             {
-                Id = p.Id,
-                Name = p.Name,
-                Description = p.Description,
-                Price = p.Price,
-                Coverage = p.Coverage,
-                Active = p.Active
-            }).ToList();
+                Active = dbPolicy.Active,
+                Coverage = dbPolicy.Coverage,
+                Description = dbPolicy.Description,
+                Id = dbPolicy.Id,
+                Name = dbPolicy.Name,
+                PolicyTypeId = dbPolicy.PolicyTypeId,
+                Price = dbPolicy.Price,
+                RiskTypeId = dbPolicy.RiskTypeId
+            };
 
-            return new APIResult<PolicyDto> { ResultObject = policies };
+            return new APIResult<PolicyDto> { ResultObject = new List<PolicyDto> { policy } };
         }
 
         public APIResult<PolicyDto> Post(PolicyDto policyDto)
@@ -62,8 +67,7 @@
                     Active = policyDto.Active
                 };
 
-                context.Policy.Add(policy);
-                context.SaveChanges();
+                repository.CreateAsync(policy);
                 policyDto.Id = policy.Id;
                 result.ResultObject = new List<PolicyDto> { policyDto };
                 result.ResultMessage = Constants.policyCreated;
@@ -90,8 +94,8 @@
                 policy.PolicyTypeId = policyDto.PolicyTypeId;
                 policy.RiskTypeId = policyDto.RiskTypeId;
                 policy.Active = policyDto.Active;
-                context.Policy.Update(policy);
-                context.SaveChanges();
+
+                repository.UpdateAsync(policy);
                 result.ResultObject = new List<PolicyDto> { policyDto };
                 result.ResultMessage = Constants.policyUpdated;
             }
@@ -110,8 +114,7 @@
             if (ValidatePolicyRelation(id))
             {
                 Policy policy = context.Policy.FirstOrDefault(p => p.Id == id);
-                context.Policy.Remove(policy);
-                context.SaveChanges();
+                repository.DeleteAsync(policy);
                 result.ResultMessage = Constants.policyDeleted;
             }
             else
