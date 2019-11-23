@@ -39,6 +39,23 @@ namespace GestionPolizas.BLL.Test
         }
 
         [TestMethod]
+        public void PostError()
+        {
+            PolicyDto policy = new PolicyDto
+            {
+                Active = true,
+                Coverage = 0.6,
+                Description = "Poliza riesgo alto covertura 60%",
+                Name = "Poliza 60",
+                PolicyTypeId = 1,
+                Price = 1500,
+                RiskTypeId = 4
+            };
+            var specificPolicy = poliza.Post(policy);
+            Assert.IsTrue(specificPolicy.DataError);
+        }
+
+        [TestMethod]
         public void Patch()
         {
             PolicyDto policy = new PolicyDto
@@ -54,6 +71,24 @@ namespace GestionPolizas.BLL.Test
             };
             var specificPolicy = poliza.Patch(policy);
             Assert.IsNotNull(specificPolicy.ResultObject);
+        }
+
+        [TestMethod]
+        public void PatchError()
+        {
+            PolicyDto policy = new PolicyDto
+            {
+                Id = 1,
+                Active = true,
+                Coverage = 0.6,
+                Description = "Poliza riesgo alto covertura 60%",
+                Name = "Poliza 60",
+                PolicyTypeId = 1,
+                Price = 1500,
+                RiskTypeId = 4
+            };
+            var specificPolicy = poliza.Patch(policy);
+            Assert.IsTrue(specificPolicy.DataError);
         }
 
         [TestMethod]
