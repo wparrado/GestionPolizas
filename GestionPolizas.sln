@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPolizas", "GestionPolizas\GestionPolizas.csproj", "{026AC057-93B0-4FA7-8A0F-4EE1C0C38718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionPolizas", "GestionPolizas\GestionPolizas.csproj", "{026AC057-93B0-4FA7-8A0F-4EE1C0C38718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPolizas.BLL", "GestionPolizasBll\GestionPolizas.BLL.csproj", "{E82797D8-5D27-4477-887A-4EBA069DC524}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPolizas.Entities", "GestionPolizas.Entities\GestionPolizas.Entities.csproj", "{66F32BC5-933B-40E9-AA4F-2000FE758872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPolizas.DAL", "GestionPolizas.DAL\GestionPolizas.DAL.csproj", "{677B0CE8-7953-49A7-877F-B5712B8E9CD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPolizas.Common", "GestionPolizas.Common\GestionPolizas.Common.csproj", "{42D3CE73-916D-42EB-8EEE-5208BF278AA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPolizas.BLL.Test", "GestionPolizas.BLL.Test\GestionPolizas.BLL.Test.csproj", "{4566023C-1C58-41F8-8A03-9975EB0F7F04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,26 @@ Global
 		{026AC057-93B0-4FA7-8A0F-4EE1C0C38718}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{026AC057-93B0-4FA7-8A0F-4EE1C0C38718}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{026AC057-93B0-4FA7-8A0F-4EE1C0C38718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E82797D8-5D27-4477-887A-4EBA069DC524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E82797D8-5D27-4477-887A-4EBA069DC524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E82797D8-5D27-4477-887A-4EBA069DC524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E82797D8-5D27-4477-887A-4EBA069DC524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66F32BC5-933B-40E9-AA4F-2000FE758872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F32BC5-933B-40E9-AA4F-2000FE758872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F32BC5-933B-40E9-AA4F-2000FE758872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F32BC5-933B-40E9-AA4F-2000FE758872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{677B0CE8-7953-49A7-877F-B5712B8E9CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{677B0CE8-7953-49A7-877F-B5712B8E9CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{677B0CE8-7953-49A7-877F-B5712B8E9CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{677B0CE8-7953-49A7-877F-B5712B8E9CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42D3CE73-916D-42EB-8EEE-5208BF278AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42D3CE73-916D-42EB-8EEE-5208BF278AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42D3CE73-916D-42EB-8EEE-5208BF278AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42D3CE73-916D-42EB-8EEE-5208BF278AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4566023C-1C58-41F8-8A03-9975EB0F7F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4566023C-1C58-41F8-8A03-9975EB0F7F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4566023C-1C58-41F8-8A03-9975EB0F7F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4566023C-1C58-41F8-8A03-9975EB0F7F04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
