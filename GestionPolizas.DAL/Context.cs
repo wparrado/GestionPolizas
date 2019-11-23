@@ -5,8 +5,21 @@
 
     public partial class Context : DbContext
     {
-        public Context(DbContextOptions<Context> options) : base(options)
+        private static bool created = false;
+
+        public Context()
         {
+            if (!created)
+            {
+                created = true;
+                Database.EnsureDeleted();
+                Database.EnsureCreated();
+            }
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
+        {
+            optionbuilder.UseSqlite(@"Data Source=c:\GestionPolizas.db");
         }
 
         public virtual DbSet<Customer> Customer { get; set; }
