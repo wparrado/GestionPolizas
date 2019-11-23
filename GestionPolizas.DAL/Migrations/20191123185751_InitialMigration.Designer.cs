@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestionPolizas.DAL.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191123174455_InitialMigration")]
+    [Migration("20191123185751_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,7 +90,7 @@ namespace GestionPolizas.DAL.Migrations
 
                     b.Property<bool>("Active");
 
-                    b.Property<int>("Coverage");
+                    b.Property<double>("Coverage");
 
                     b.Property<string>("Description");
 

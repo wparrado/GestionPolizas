@@ -88,7 +88,7 @@ namespace GestionPolizas.DAL.Migrations
 
                     b.Property<bool>("Active");
 
-                    b.Property<int>("Coverage");
+                    b.Property<double>("Coverage");
 
                     b.Property<string>("Description");
 

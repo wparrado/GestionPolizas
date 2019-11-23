@@ -84,7 +84,7 @@ namespace GestionPolizas.DAL.Migrations
                     Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     PolicyTypeId = table.Column<int>(nullable: false),
-                    Coverage = table.Column<int>(nullable: false),
+                    Coverage = table.Column<double>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
                     RiskTypeId = table.Column<int>(nullable: false),
                     Active = table.Column<bool>(nullable: false)
