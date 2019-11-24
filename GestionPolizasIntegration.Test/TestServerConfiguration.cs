@@ -15,7 +15,7 @@
                 .UseStartup<GestionPolizas.Startup>();
             _server = new TestServer(builder);
             Client = _server.CreateClient();
-            Client.BaseAddress = new Uri("http://localhost:8888");
+            Client.BaseAddress = new Uri("https://localhost:44326/api/");
         }
         public void Dispose()
         {

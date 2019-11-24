@@ -9,8 +9,9 @@ namespace GestionPolizas.BLL.Test
 
     {
         private static readonly Context context = new Context();
+        private static readonly IRepository repository = new Repository<Context>(context);
 
-        private readonly PolizaBll poliza = new PolizaBll(context);
+        private readonly PolizaBll poliza = new PolizaBll(context, repository);
 
         [TestMethod]
         public void Get()
@@ -43,6 +44,7 @@ namespace GestionPolizas.BLL.Test
         {
             PolicyDto policy = new PolicyDto
             {
+                Id = 1,
                 Active = true,
                 Coverage = 0.6,
                 Description = "Poliza riesgo alto covertura 60%",
