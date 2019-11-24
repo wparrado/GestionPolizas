@@ -48,7 +48,6 @@
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        [Authorize(Roles.DIRECTOR)]
         public APIResult<PolicyDto> Delete(int id)
         {
             return poliza.Delete(id);
