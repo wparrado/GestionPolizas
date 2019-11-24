@@ -1,8 +1,10 @@
 ﻿namespace GestionPolizas.Controllers
 {
     using GestionPolizas.BLL;
+    using GestionPolizas.Common;
     using GestionPolizas.Entities;
     using GestionPolizas.Entities.DTO;
+    using GestionPolizas.Filters;
     using Microsoft.AspNetCore.Mvc;
 
     [Route("api/[controller]")]
@@ -46,6 +48,7 @@
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
+        [Authorize(Roles.DIRECTOR)]
         public APIResult<PolicyDto> Delete(int id)
         {
             return poliza.Delete(id);
