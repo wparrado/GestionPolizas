@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-namespace GestionPolizas.Controllers
+﻿namespace GestionPolizas.Controllers
 {
     using GestionPolizas.BLL;
     using GestionPolizas.Entities;

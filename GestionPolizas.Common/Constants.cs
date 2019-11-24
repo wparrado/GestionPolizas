@@ -9,5 +9,6 @@ namespace GestionPolizas.Common
         public static string policyCreated = "Poliza creada";
         public static string policyUpdated = "Poliza actualizada";
         public static string policyDeleted = "Poliza eliminada";
+        public static string savedChanges = "Cambios guardados";
     }
 }

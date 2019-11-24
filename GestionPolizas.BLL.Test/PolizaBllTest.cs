@@ -1,9 +1,9 @@
-using GestionPolizas.DAL;
-using GestionPolizas.Entities.DTO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace GestionPolizas.BLL.Test
 {
+    using GestionPolizas.DAL;
+    using GestionPolizas.Entities.DTO;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class PolizaBllTest
 
