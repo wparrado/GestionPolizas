@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -25,6 +26,19 @@ namespace GestionPolizas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MvcOptions>(options => { options.Filters.Add(new CorsAuthorizationFilterFactory("AllowFront")); });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFront", builder => builder.WithOrigins(
+                    "http://localhost:4200")
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .AllowAnyHeader());
+            });
+
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             var key = Encoding.ASCII.GetBytes("WQW79-OFFKDI940NG7-56753253-SADVF-5769-0921-DSD987987SA");
             services.AddAuthentication(x => {

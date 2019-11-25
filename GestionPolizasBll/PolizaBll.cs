@@ -4,6 +4,7 @@
     using GestionPolizas.DAL;
     using GestionPolizas.Entities;
     using GestionPolizas.Entities.DTO;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -20,6 +21,7 @@
 
         public APIResult<PolicyDto> Get()
         {
+            var algo = Enum.GetValues(typeof(RiskTypes));
             var policies = repository.FindAll<Policy>().Result.Select(p => new PolicyDto
             {
                 Id = p.Id,
@@ -27,7 +29,11 @@
                 Description = p.Description,
                 Price = p.Price,
                 Coverage = p.Coverage,
-                Active = p.Active
+                Active = p.Active,
+                PolicyTypeId = p.PolicyTypeId,
+                PolicyType = Enum.GetName(typeof(PolicyTypes), p.PolicyTypeId),
+                RiskTypeId = p.RiskTypeId,
+                RiskType = Enum.GetName(typeof(RiskTypes), p.RiskTypeId)
             }).ToList();
 
             return new APIResult<PolicyDto> { ResultObject = policies };
@@ -44,8 +50,10 @@
                 Id = dbPolicy.Id,
                 Name = dbPolicy.Name,
                 PolicyTypeId = dbPolicy.PolicyTypeId,
+                PolicyType = Enum.GetName(typeof(PolicyTypes), dbPolicy.PolicyTypeId),
                 Price = dbPolicy.Price,
-                RiskTypeId = dbPolicy.RiskTypeId
+                RiskTypeId = dbPolicy.RiskTypeId,
+                RiskType = Enum.GetName(typeof(RiskTypes), dbPolicy.RiskTypeId)
             };
 
             return new APIResult<PolicyDto> { ResultObject = new List<PolicyDto> { policy } };

@@ -1,0 +1,33 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Tipo de Poliza</th>
+              <th scope="col">Covertura</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Riesgo</th>
+              <th scope="col">Activa</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr *ngFor="let policy of policies">
+            <th>{{ policy.id }}</th>
+            <th>{{ policy.name }}</th>
+            <th>{{ policy.description }}</th>
+            <th>{{ policy.policyType }}</th>
+            <th>{{ policy.coverage }}</th>
+            <th>{{ policy.price }}</th>
+            <th>{{ policy.riskType }}</th>
+            <th>{{ policy.active }}</th>
+            <button type="button" class="btn btn-warning">Editar</button>
+            <button type="button" class="btn btn-danger">Eliminar</button>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+  <div>
+    <button (click)="addPolicy()" type="button" class="btn btn-primary">Adicionar Poliza</button>
+  </div>
